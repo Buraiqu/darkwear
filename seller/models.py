@@ -1,0 +1,42 @@
+from django.db import models
+
+# Create your models here.
+class Products(models.Model):
+    product_name = models.CharField(max_length=60)
+    description = models.CharField(max_length=300)
+    image = models.ImageField(upload_to='products/')
+    material_id = models.ForeignKey("Material", on_delete=models.CASCADE) 
+    category_id = models.ForeignKey("Category", on_delete=models.CASCADE)
+    fit_id = models.ForeignKey("Fit", on_delete=models.CASCADE) 
+    pattern_id = models.ForeignKey("Pattern", on_delete=models.CASCADE)
+    sleeve_id = models.ForeignKey("Sleeve", on_delete=models.CASCADE)
+    neck_id = models.ForeignKey("Neck", on_delete=models.CASCADE)  
+    price = models.BigIntegerField()
+    
+class Category(models.Model):
+    category_name = models.CharField(max_length=80)    
+    
+class Size(models.Model):
+    size = models.CharField(max_length=50)  
+    
+class Material(models.Model):
+    material = models.CharField(max_length=80)     
+    
+class Fit(models.Model):
+    fit_type = models.CharField(max_length=100)     
+    
+class Pattern(models.Model):
+    pattern = models.CharField(max_length=100) 
+    
+class Sleeve(models.Model):
+    sleeve_type = models.CharField(max_length=130)    
+    
+class Neck(models.Model):
+    neck_type = models.CharField(max_length=100)    
+    
+class Variant(models.Model):
+    product_id = models.ForeignKey("Products", on_delete=models.CASCADE) 
+    size_id = models.ForeignKey("Size", on_delete=models.CASCADE) 
+    quantity = models.BigIntegerField()
+    sku = models.CharField(max_length=50)
+        
