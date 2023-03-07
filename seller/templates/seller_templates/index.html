@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>DarkWear</title>
 
     <!-- Custom fonts for this template-->
     <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
@@ -19,7 +18,6 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{% static 'css/sb-admin-2.css' %}" rel="stylesheet">
 
 </head>
 
@@ -59,18 +57,26 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{% url 'seller:shome' %}" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="{% url 'seller:shome' %}" data-toggle="collapse"
+                    data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Add Products</span>
                 </a>
-                
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{% url 'seller:variant' %}" data-toggle="collapse"
+                    data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Add Variant</span>
+                </a>
+
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{% url 'seller:viewproducts' %}" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="{% url 'seller:viewproducts' %}" data-toggle="collapse"
+                    data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>View Products</span>
                 </a>
@@ -78,8 +84,8 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{% url 'seller:stockupdate' %}" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="{% url 'seller:stockupdate' %}" data-toggle="collapse"
+                    data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Update Stock</span>
                 </a>
@@ -87,8 +93,8 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{% url 'seller:changepassword' %}" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="{% url 'seller:changepassword' %}" data-toggle="collapse"
+                    data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Change Password</span>
                 </a>
@@ -154,8 +160,8 @@
 
                             <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="{% url 'seller:profile' %}" id="userDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Account</span>
                                 <!-- <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg"> -->
@@ -190,77 +196,10 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Welcome Seller</h1>
-                    </div>
-
-                    <!-- Content Row -->
-
-
-
-                    <!-- Content Row -->
-
-                    <div class="row">
-
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            
-                                <!-- Card Header - Dropdown -->
-                                    <h6 class="m-0 font-weight-bold text-primary">View Products</h6>
-                                    <br>
-                                <form method="POST">
-                                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                                        <div class="col">
-                                            <div class="form-outline">
-                                                <select class="form-select btn-big" name="">
-                                                    <option selected disabled>Select Product</option>
-                                                    {% for i in product %}
-                                                        <option value="{{ i.id}}">{{ i.id }}</option>
-                                                    {% endfor %}    
-                                                </select>
-                                                <label for="birthdayDate" class="form-label">Product Id</label>
-                                            </div>
-                                        </div>    
-                                        <div class="col">
-                                            <div class="form-outline">    
-                                                <input type="text" id="pname" class="form-control border-0 rounded-4" >
-                                                <label for="birthdayDate" class="form-label">Product Name</label>
-                                            </div>
-                                        </div>
-                                    </div>    
-                                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                                        <div class="col">
-                                            <div class="form-outline">
-                                                <label for="stockup" class="form-label">Current Stock</label>
-                                                <input type="number" name="stock" class="form-control border-0 rounded-4" id="stock">
-                                            </div>
-                                        </div>
-                                    </div> 
-                                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                                        <div class="col">
-                                            <div class="form-outline">
-                                                <label for="stockup" class="form-label">Update Stock</label>
-                                                <input type="number" name="stock" class="form-control border-0 rounded-4" id="new_stock">
-                                            </div>
-                                        </div>
-                                    </div>        
-                                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                                        <div class="col">
-                                            <div class="form-outline">
-                                                <a href id="submit" class="btn btn-primary">Update</a><br><br>
-                                                {{message}}
-                                            </div>
-                                        </div>
-                                    </div>        
-                                    
-                                </form>   
-                        </div>
-                    </div>
-                    <!-- Content Row -->
+                    {% block content %} {% endblock %}
                 </div>
                 <!-- /.container-fluid -->
+
             </div>
             <!-- End of Main Content -->
 
@@ -305,52 +244,10 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+
     <script>
-        $(document).ready(function(){
-            
-            $.ajaxSetup({
-                headers:{
-                    "X-CSRFToken":'{{ csrf_token }}'
-                }
-            })
-            $('select').change(function(){
-                let pno = $(this).val()
-                
-
-                $.ajax({
-                    url:"{% url 'seller:stock_up' %}",
-                    data : {
-                        'pno':pno
-                    },
-                    method : 'POST',
-                    success : function(response){
-                        $('#pname').val(response.product_name)
-                        $('#stock').val(response.Stock)
-                    }
-                })     
-            })
-            $('#submit').click(function(){
-                let new_stock = $('#new_stock').val()
-                let pno = $('select').val()
-                $.ajax({
-                    url : "{% url 'seller:add_stock' %}",
-                    data : {
-                        'pno' : pno,
-                        'new_stock' : new_stock
-                    },
-                    method : 'POST',
-                    success : function(response){
-
-                        alert(response.message)
-                    }
-                })
-            })
-        })
     </script>
-
-
-
 </body>
 
 </html>

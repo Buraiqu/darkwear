@@ -68,11 +68,8 @@ def seller_login(request):
         s_username= request.POST['username']  
         s_password = request.POST['password']
         try:
-            sellerlog = Seller.objects.get(
-                username= s_username,
-                password= s_password
-            )
-            request.session['seller']=sellerlog.id
+            sellerlog = Seller.objects.get(username= s_username,password= s_password)
+            request.session['seller'] = sellerlog.id
             return redirect('seller:shome')
         except:
             msg="Invalid Username or password"  

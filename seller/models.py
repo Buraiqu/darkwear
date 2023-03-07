@@ -1,10 +1,12 @@
 from django.db import models
+from unittest.util import _MAX_LENGTH
+from home.models import Seller
 
 # Create your models here.
 class Products(models.Model):
     product_name = models.CharField(max_length=60)
     description = models.CharField(max_length=300)
-    image = models.ImageField(upload_to='products/')
+    thumbnail = models.ImageField(upload_to='products/')
     material_id = models.ForeignKey("Material", on_delete=models.CASCADE) 
     category_id = models.ForeignKey("Category", on_delete=models.CASCADE)
     fit_id = models.ForeignKey("Fit", on_delete=models.CASCADE) 
@@ -12,6 +14,11 @@ class Products(models.Model):
     sleeve_id = models.ForeignKey("Sleeve", on_delete=models.CASCADE)
     neck_id = models.ForeignKey("Neck", on_delete=models.CASCADE)  
     price = models.BigIntegerField()
+    seller_id = models.ForeignKey("home.Seller",on_delete=models.CASCADE,null=True)
+    
+class Album(models.Model):
+      image =models.ImageField(upload_to='products/')
+      product = models.ForeignKey("Products",on_delete=models.CASCADE)
     
 class Category(models.Model):
     category_name = models.CharField(max_length=80)    
@@ -38,5 +45,4 @@ class Variant(models.Model):
     product_id = models.ForeignKey("Products", on_delete=models.CASCADE) 
     size_id = models.ForeignKey("Size", on_delete=models.CASCADE) 
     quantity = models.BigIntegerField()
-    sku = models.CharField(max_length=50)
         

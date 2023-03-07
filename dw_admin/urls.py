@@ -9,5 +9,4 @@ urlpatterns = [
     path('btn_reject_seller/<int:sid>',views.btn_reject_seller,name='btn_reject_seller'),
     path('view_user',views.view_user,name= 'view_user'),
     path('complaints',views.complaints,name= 'complaints')
-    
 ]
